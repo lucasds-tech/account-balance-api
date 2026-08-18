@@ -22,7 +22,7 @@ public class Account {
     private UUID id;
 
     @Column(nullable = false)
-    private String owner;
+    private UUID owner;
 
     @Column(nullable = false)
     private String status;
