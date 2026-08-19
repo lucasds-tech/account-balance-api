@@ -22,7 +22,7 @@ public class BalanceService {
 
     private final BalanceRepository balanceRepository;
     private final AccountRepository accountRepository;
-    private final ZoneId zoneId;
+    private final ZoneId zoneIdSP;
 
     @Transactional(readOnly = true)
     public BalanceResponse getBalance(UUID accountId) {
@@ -33,7 +33,7 @@ public class BalanceService {
                 .orElseThrow(() -> notFound(accountId));
 
         String updatedAt = balance.getUpdatedAt()
-                .atZone(zoneId).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
+                .atZone(zoneIdSP).format(DateTimeFormatter.ISO_OFFSET_DATE_TIME);
 
         return new BalanceResponse(
                 accountId,
