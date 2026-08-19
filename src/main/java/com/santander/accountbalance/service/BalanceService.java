@@ -1,6 +1,7 @@
 package com.santander.accountbalance.service;
 
 import com.santander.accountbalance.dto.BalanceResponse;
+import com.santander.accountbalance.exception.AccountNotFoundException;
 import com.santander.accountbalance.model.Account;
 import com.santander.accountbalance.model.Balance;
 import com.santander.accountbalance.repository.AccountRepository;
@@ -41,8 +42,8 @@ public class BalanceService {
                 updatedAt);
     }
 
-    private RuntimeException notFound(UUID accountId) {
-        return new RuntimeException("Account not found: " + accountId);
+    private AccountNotFoundException notFound(UUID accountId) {
+        return new AccountNotFoundException("Account not found: " + accountId);
     }
 
 }
